@@ -1,0 +1,34 @@
+# Dependencies - skip nested node_modules
+**/node_modules
+
+# Build outputs
+**/.next
+**/dist
+**/build
+
+# Environment files
+**/.env
+**/.env.local
+**/.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+**/*.log
+**/npm-debug.log*
+
+# IDE
+**/.vscode
+**/.idea
+
+# TypeScript
+**/*.tsbuildinfo
+
+# Prisma
+**/*.db
+**/*.db-journal
+
+# Misc
+*.pem
