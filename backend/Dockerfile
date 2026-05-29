@@ -2,24 +2,21 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-
 # Install dependencies
+COPY package*.json ./
 RUN npm ci --only=production
 
-# Copy source code
+# Copy source
 COPY . .
 
-# Build TypeScript
-RUN npm run build || echo "Build skipped for dev mode"
+# Generate Prisma client
+RUN npx prisma generate
+
+# Copy .env if exists
+COPY .env* .env 2>/dev/null || true
 
 # Expose port
 EXPOSE 4000
 
-# Environment variables
-ENV NODE_ENV=production
-ENV PORT=4000
-
-# Start command
+# Start
 CMD ["npm", "run", "dev"]
