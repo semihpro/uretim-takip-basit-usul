@@ -208,7 +208,7 @@ export default function ExcelPage() {
             <ul className="text-sm text-blue-700 space-y-1">
               <li><code>kod</code> - Urun kodu (benzersiz)</li>
               <li><code>ad</code> - Urun adi</li>
-              <li><code>ust_kod</code> - Ust urunun kodu (bos ise ana urun)</li>
+              <li><code>ust_kod</code> - Ust urunun kodu (bos = ana urun)</li>
               <li><code>birim</code> - Birim (adet, kg, mt...)</li>
             </ul>
           </div>

@@ -50,15 +50,18 @@ export async function importFromExcel(fileBuffer: Buffer): Promise<ExcelImportRe
     // Create products
     for (const [code, data] of productsData) {
       try {
-        // Resolve parent
+        // Resolve parent based on parentCode
         let parentId: string | null = null
-        let level = 1
+        let level = data.level || 1
 
         if (data.parentCode) {
           const parent = await prisma.product.findUnique({ where: { code: data.parentCode } })
           if (parent) {
             parentId = parent.id
-            level = parent.level + 1
+            // Auto-calculate level from parent if not explicitly set
+            if (data.level === undefined || data.level === 0) {
+              level = parent.level + 1
+            }
           } else if (productsData.has(data.parentCode)) {
             // Parent will be created in this batch - skip for now
           }
@@ -73,7 +76,8 @@ export async function importFromExcel(fileBuffer: Buffer): Promise<ExcelImportRe
             data: {
               name: data.name,
               unit: data.unit,
-              level
+              level,
+              parentId
             }
           })
           result.updated++
@@ -96,18 +100,18 @@ export async function importFromExcel(fileBuffer: Buffer): Promise<ExcelImportRe
 
     // Second pass: update parentIds for products whose parents were in the batch
     for (const [code, data] of productsData) {
-      if (data.parentCode && data.parentCode && productsData.has(data.parentCode)) {
+      if (data.parentCode && productsData.has(data.parentCode)) {
         const product = await prisma.product.findUnique({ where: { code } })
         const parent = await prisma.product.findUnique({ where: { code: data.parentCode } })
         
         if (product && parent && !product.parentId) {
-          const newLevel = parent.level + 1
-          if (product.level !== newLevel) {
-            await prisma.product.update({
-              where: { id: product.id },
-              data: { parentId: parent.id, level: newLevel }
-            })
-          }
+          await prisma.product.update({
+            where: { id: product.id },
+            data: { 
+              parentId: parent.id, 
+              level: parent.level + 1 
+            }
+          })
         }
       }
     }

@@ -147,7 +147,7 @@ export default function ProductsPage() {
             <button onClick={() => setSelectedProduct(null)} className="text-gray-400 hover:text-gray-600">✕</button>
           </div>
 
-          <div className="mt-4 grid grid-cols-3 gap-4 text-sm">
+          <div className="mt-4 grid grid-cols-4 gap-4 text-sm">
             <div>
               <p className="text-gray-500">Seviye</p>
               <p className="font-medium">{selectedProduct.level}</p>
@@ -157,8 +157,12 @@ export default function ProductsPage() {
               <p className="font-medium">{selectedProduct.unit || '-'}</p>
             </div>
             <div>
-              <p className="text-gray-500">Alt Ürün</p>
+              <p className="text-gray-500">Alt Urun</p>
               <p className="font-medium">{(selectedProduct as any).children?.length || 0}</p>
+            </div>
+            <div>
+              <p className="text-gray-500">Kod</p>
+              <p className="font-medium">{selectedProduct.code}</p>
             </div>
           </div>
 

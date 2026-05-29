@@ -103,11 +103,12 @@ router.get('/export-products', authMiddleware, requireRole('admin', 'supervisor'
 router.get('/template', authMiddleware, requireRole('admin', 'supervisor'), async (req: AuthRequest, res: Response) => {
   try {
     // Return JSON with template data - frontend will generate CSV
-    const template = {
+const template = {
       products: [
         { kod: 'URK-001', ad: 'Ana Urun', ust_kod: '', birim: 'adet' },
         { kod: 'URK-001-01', ad: 'Alt Parca 1', ust_kod: 'URK-001', birim: 'adet' },
-        { kod: 'URK-001-02', ad: 'Alt Parca 2', ust_kod: 'URK-001', birim: 'adet' }
+        { kod: 'URK-001-02', ad: 'Alt Parca 2', ust_kod: 'URK-001', birim: 'adet' },
+        { kod: 'URK-001-02-01', ad: 'Alt Alt Parca', ust_kod: 'URK-001-02', birim: 'adet' }
       ],
       routes: [
         { urun_kod: 'URK-001', istasyon_kod: 'KESIM', sira: 1, son_adim: 'Hayir' },
