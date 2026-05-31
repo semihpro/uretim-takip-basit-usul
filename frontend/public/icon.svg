@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="#4F46E5"/>
+  
+  <!-- Factory/Production icon - simplified factory shape -->
+  <path d="M16 42 L16 28 L24 28 L24 24 L32 24 L32 28 L40 28 L40 24 L48 24 L48 42" 
+        stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Chimney -->
+  <rect x="20" y="16" width="4" height="8" fill="white"/>
+  <rect x="40" y="18" width="4" height="6" fill="white"/>
+  
+  <!-- Barcode lines on factory -->
+  <rect x="22" y="32" width="2" height="6" fill="white"/>
+  <rect x="26" y="32" width="1" height="6" fill="white"/>
+  <rect x="29" y="32" width="2" height="6" fill="white"/>
+  <rect x="33" y="32" width="1" height="6" fill="white"/>
+  <rect x="36" y="32" width="2" height="6" fill="white"/>
+  <rect x="40" y="32" width="1" height="6" fill="white"/>
+  
+  <!-- Checkmark (completed) -->
+  <circle cx="50" cy="18" r="10" fill="#10B981"/>
+  <path d="M45 18 L48 21 L55 14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

@@ -44,9 +44,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <LogIn className="w-8 h-8 text-white" />
-          </div>
+          <img src="/icon.svg" alt="Logo" className="w-20 h-20 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-gray-900">Üretim Takip</h1>
           <p className="text-gray-500 mt-2">Giriş yapmak için bilgilerinizi girin</p>
         </div>

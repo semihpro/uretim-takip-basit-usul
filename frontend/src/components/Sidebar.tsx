@@ -15,6 +15,7 @@ import {
   ChevronRight,
   FileSpreadsheet,
   Users,
+  HelpCircle,
 } from 'lucide-react'
 import { useAuthStore } from '@/lib/auth'
 
@@ -26,6 +27,7 @@ const menuItems = [
   { href: '/scan', icon: ScanBarcode, label: 'Tarama' },
   { href: '/workstations', icon: Settings, label: 'Istasyonlar' },
   { href: '/excel', icon: FileSpreadsheet, label: 'Excel Import' },
+  { href: '/guide', icon: HelpCircle, label: 'Kullanim Rehberi' },
   { href: '/users', icon: Users, label: 'Kullanicilar', adminOnly: true },
 ]
 
@@ -71,7 +73,8 @@ export default function Sidebar() {
         `}
       >
         {/* Logo */}
-        <div className="h-16 flex items-center px-6 border-b border-gray-200">
+        <div className="h-16 flex items-center px-6 border-b border-gray-200 gap-3">
+          <img src="/icon.svg" alt="Logo" className="w-8 h-8" />
           <h1 className="text-lg font-bold text-indigo-600">Uretim Takip</h1>
         </div>
 

@@ -58,17 +58,17 @@ export default function ExcelPage() {
       const workbook = XLSX.utils.book_new()
       
       // Sheet 1: Urunler
-      const productsData = [
+      const productsData: (string | null | undefined)[][] = [
         ['kod', 'ad', 'ust_kod', 'birim'],
-        ...template.products.map(p => [p.kod, p.ad, p.ust_kod, p.birim])
+        ...template.products.map((p: { kod?: string; ad?: string; ust_kod?: string; birim?: string }) => [p.kod, p.ad, p.ust_kod, p.birim])
       ]
       const productsSheet = XLSX.utils.aoa_to_sheet(productsData)
       XLSX.utils.book_append_sheet(workbook, productsSheet, 'Urunler')
       
       // Sheet 2: Rotasyon
-      const routesData = [
+      const routesData: (string | number | boolean | null | undefined)[][] = [
         ['urun_kod', 'istasyon_kod', 'sira', 'son_adim'],
-        ...template.routes.map(r => [r.urun_kod, r.istasyon_kod, r.sira, r.son_adim])
+        ...template.routes.map((r: { urun_kod?: string; istasyon_kod?: string; sira?: number; son_adim?: boolean }) => [r.urun_kod, r.istasyon_kod, r.sira, r.son_adim])
       ]
       const routesSheet = XLSX.utils.aoa_to_sheet(routesData)
       XLSX.utils.book_append_sheet(workbook, routesSheet, 'Rotasyon')
